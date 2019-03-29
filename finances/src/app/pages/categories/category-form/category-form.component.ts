@@ -20,7 +20,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   currentAction: string;
   categoryForm: FormGroup;
   pageTitle: string;
-  serverErrorMessages: Array<string> = Array<string>();
+  serverErrorMessages: Array<string>;
   submittingForm: boolean = false;
   category: Category = new Category();
   isNewForm: boolean = true;
