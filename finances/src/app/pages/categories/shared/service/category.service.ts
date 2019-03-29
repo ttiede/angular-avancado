@@ -62,13 +62,16 @@ export class CategoryService {
   private jsonDataToCategories(jsondata: any[]): Array<Category> {
     const categories: Array<Category> = new Array<Category> ();
     jsondata.forEach(element => {
-      categories.push(element as Category);
+      const category = Object.assign( new Category(), element);
+      categories.push(category);
     });
     
     return categories;
   }
 
   private jsonDataToCategory(jsondata: any): Category {
-    return jsondata as Category;
+    const category = Object.assign( new Category(), jsondata);
+    return category;
+
   }  
 }
