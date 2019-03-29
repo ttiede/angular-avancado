@@ -18,7 +18,7 @@
     </div> 
   </div>
 
-  <form>
+  <form [formGroup]="categoriesForm">
     <div class="card">
       <div class="card-header">
         Informações sobre a categoria
@@ -37,7 +37,7 @@
         </div>        
       </div>
     </div>
-    <button class="bt btn-primary btn-lg float-right mt-3">
+    <button class="bt btn-primary btn-lg float-right mt-3 ">
       Salvar
     </button>
   </form>
