@@ -60,8 +60,6 @@ export class EntryService {
         );
       })
     );
-
-
   }
 
   delete(id: number): Observable<any>{
@@ -79,7 +77,7 @@ export class EntryService {
   }
 
   private jsonDataToEntries(jsondata: any[]): Array<Entry> {
-    const entries: Array<Entry> = new Array<Entry> ();
+    const entries: Array<Entry> = new Array<Entry>();
     jsondata.forEach(element => {
       const entry = Object.assign( new Entry(), element);
       entries.push(entry);
