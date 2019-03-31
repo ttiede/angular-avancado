@@ -9,7 +9,7 @@ import { CategoryService } from "../shared/service/category.service";
 })
 export class CategoryListComponent implements OnInit {
   categories: Array<Category> = new Array<Category>();
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.categoryService

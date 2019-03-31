@@ -56,7 +56,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
       (error) => this.actionsForError(error)
     );
   }
-  
+
   private createCategory() {
     const category: Category = Object.assign(new Category(), this.categoryForm.value);
     this.categoryService.create(category).subscribe(
@@ -69,7 +69,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     toastr.error("Ocorreu um erro ao processar a sua solicitação");
 
     this.submittingForm = false;
-    if(error.status == 422)
+    if (error.status == 422)
       this.serverErrorMessages = JSON.parse(error._body).errors;
     else
       this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."];
@@ -119,9 +119,9 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     if (this.route.snapshot.url[0].path == "new") {
       this.currentAction = "new";
     }
-    else{
-        this.currentAction = "edit";
-        this.isNewForm = false;
-      }
+    else {
+      this.currentAction = "edit";
+      this.isNewForm = false;
+    }
   }
 }
