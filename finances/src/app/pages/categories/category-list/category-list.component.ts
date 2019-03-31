@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Category } from "../shared/model/category.model";
 import { CategoryService } from "../shared/service/category.service";
-import { element } from "@angular/core/src/render3";
 
 @Component({
   selector: "app-category-list",
