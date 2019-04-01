@@ -23,4 +23,8 @@ export class Entry extends BaseResourceModel{
     getpaidText(): string{
         return this.paid? "Pago" : "Pendente";
     }
+
+    static fromJson(jsonData: any): Entry {
+        return Object.assign(new Entry(), jsonData);
+      }
 }

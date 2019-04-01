@@ -11,70 +11,74 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
   protected http: HttpClient;
 
-  constructor(protected apiPath: string, protected injector: Injector) {
-    this.http = injector.get(HttpClient);
+  constructor(
+    protected apiPath: string, 
+    protected injector: Injector, 
+    protected jsonDataToResourceFn: (jsonData: any) => T
+  ){
+    this.http = injector.get(HttpClient);    
   }
 
-
-  getAll(): Observable<Array<T>> {
+  getAll(): Observable<T[]> {
     return this.http.get(this.apiPath).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToResources)
-    );
+      map(this.jsonDataToResources.bind(this)),
+      catchError(this.handleError)
+    )
   }
 
   getById(id: number): Observable<T> {
     const url = `${this.apiPath}/${id}`;
 
     return this.http.get(url).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToResource)
-    );
+      map(this.jsonDataToResource.bind(this)),
+      catchError(this.handleError)      
+    )
   }
 
   create(resource: T): Observable<T> {
     return this.http.post(this.apiPath, resource).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToResource)
-    );
+      map(this.jsonDataToResource.bind(this)),
+      catchError(this.handleError)
+    )
   }
 
   update(resource: T): Observable<T> {
     const url = `${this.apiPath}/${resource.id}`;
 
     return this.http.put(url, resource).pipe(
-      catchError(this.handleError),
-      map(() => resource)
-    );
+      map(() => resource),
+      catchError(this.handleError)
+    )
   }
 
   delete(id: number): Observable<any> {
     const url = `${this.apiPath}/${id}`;
 
     return this.http.delete(url).pipe(
-      catchError(this.handleError),
-      map(() => null)
+      map(() => null),
+      catchError(this.handleError)
+    )
+  }
+
+  
+
+  // PROTECTED METHODS
+
+  protected jsonDataToResources(jsonData: any[]): T[] {
+    const resources: Array<T> = new Array<T>(); 
+    jsonData.forEach(
+      element => resources.push( this.jsonDataToResourceFn(element) )
     );
-  }
-
-  protected handleError(handleError: any): Observable<any> {
-    console.log("Erro na requisiçáo =>", handleError);
-    return throwError(handleError);
-  }
-
-  protected jsonDataToResources(jsondata: any[]): Array<T> {
-    const resources: Array<T> = new Array<T>();
-    jsondata.forEach(element => {
-      resources.push(element as T)
-    });
-
     return resources;
   }
 
-  protected jsonDataToResource(jsondata: any): T {
-    const resource = jsondata as T;
-    return resource;
+  protected jsonDataToResource(jsonData: any): T {
+    return this.jsonDataToResourceFn(jsonData);
+  }
 
+  protected handleError(error: any): Observable<any>{
+    console.log("ERRO NA REQUISIÇÃO => ", error);
+    return throwError(error);
   }
 
 }

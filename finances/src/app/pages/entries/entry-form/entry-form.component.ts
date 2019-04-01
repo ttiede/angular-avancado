@@ -92,16 +92,16 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private updateEntry(): any {
-    const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
-    this.entryService.update(entry).subscribe(
+      const entry: Entry = Entry.fromJson(this.entryForm.value)
+      this.entryService.update(entry).subscribe(
       (entry) => this.actionsForSucesses(entry),
       (error) => this.actionsForError(error)
     );
   }
 
   private createEntry() {
-    const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
-    this.entryService.create(entry).subscribe(
+      const entry: Entry = Entry.fromJson(this.entryForm.value)
+      this.entryService.create(entry).subscribe(
       (entry) => this.actionsForSucesses(entry),
       (error) => this.actionsForError(error)
     );

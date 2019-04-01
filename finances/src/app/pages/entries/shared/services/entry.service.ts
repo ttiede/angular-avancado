@@ -14,7 +14,7 @@ import { Entry } from "../models/entry.model";
 export class EntryService extends BaseResourceService<Entry> {
 
   constructor(protected injector: Injector, private categoryService: CategoryService) { 
-    super("api/entries", injector);
+    super("api/entries", injector, Entry.fromJson);
   }
 
 
