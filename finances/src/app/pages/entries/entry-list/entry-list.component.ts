@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Entry } from "../shared/model/entry.model";
-import { EntryService } from "../shared/service/entry.service";
+import { Entry } from "../shared/models/entry.model";
+import { EntryService } from "../shared/services/entry.service";
 import { element } from "@angular/core/src/render3";
 
 @Component({

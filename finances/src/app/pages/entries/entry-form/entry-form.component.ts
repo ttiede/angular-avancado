@@ -6,12 +6,12 @@ import {
   Validators
 } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Entry } from "../shared/model/entry.model";
-import { EntryService } from "../shared/service/entry.service";
+import { Entry } from "../shared/models/entry.model";
+import { EntryService } from "../shared/services/entry.service";
 import { switchMap } from "rxjs/operators";
 import toastr from "toastr";
-import { Category } from "../../categories/shared/model/category.model";
-import { CategoryService } from "../../categories/shared/service/category.service";
+import { Category } from "../../categories/shared/models/category.model";
+import { CategoryService } from "../../categories/shared/services/category.service";
 
 @Component({
   selector: "app-entry-form",
