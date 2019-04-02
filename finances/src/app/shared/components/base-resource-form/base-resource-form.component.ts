@@ -15,7 +15,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   currentAction: string;
   resourceForm: FormGroup;
   pageTitle: string;
-  serverErrorMessages: string[] = null;
+  serverErrorMessages: Array<string> = null;
   submittingForm: boolean = false;
   isNewForm: boolean = true;
 

@@ -5,7 +5,7 @@ import { BaseResourceService } from "../../services/base-resource.service";
 
 export abstract class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
 
-  resources: T[] = [];
+  resources: Array<T> = new Array<T>();
 
   constructor(private resourceService: BaseResourceService<T>) { }
 

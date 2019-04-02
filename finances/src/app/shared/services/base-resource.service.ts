@@ -19,7 +19,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     this.http = injector.get(HttpClient);    
   }
 
-  getAll(): Observable<T[]> {
+  getAll(): Observable<Array<T>> {
     return this.http.get(this.apiPath).pipe(
       map(this.jsonDataToResources.bind(this)),
       catchError(this.handleError)
@@ -64,7 +64,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
   // PROTECTED METHODS
 
-  protected jsonDataToResources(jsonData: any[]): T[] {
+  protected jsonDataToResources(jsonData: Array<any>): Array<T> {
     const resources: Array<T> = new Array<T>(); 
     jsonData.forEach(
       element => resources.push( this.jsonDataToResourceFn(element) )
