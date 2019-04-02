@@ -12,7 +12,7 @@ import { EntryService } from "../shared/services/entry.service";
 })
 export class EntryListComponent extends BaseResourceListComponent<Entry> {
 
-  constructor(private entryService: EntryService) { 
+  constructor(private entryService: EntryService) {
     super(entryService);
   }
 
