@@ -1,9 +1,4 @@
-<nav class="mb-5">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-    <li class="breadcrumb-item active">Categorias</li>
-  </ol>
-</nav>
+<app-bread-crumb [items]="[{ text: 'Categorias' }]"></app-bread-crumb>
 
 <div class="row mb-4">
   <div class="col-md">
@@ -18,7 +13,6 @@
   </div>
 </div>
 
-
 <table class="table table-hover">
   <thead>
     <tr class="bg-primary text-light">
@@ -29,12 +23,22 @@
   <tbody>
     <tr *ngFor="let category of resources">
       <td>
-        <strong>{{category.name}}</strong><br>
-        <small>{{category.description}}</small>
+        <strong>{{ category.name }}</strong
+        ><br />
+        <small>{{ category.description }}</small>
       </td>
       <td>
-        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button (click)="deleteResource(category)" class="btn btn-outline-danger btn-sm">Excluir</button>
+        <a
+          [routerLink]="[category.id, 'edit']"
+          class="btn btn-outline-info btn-sm mr-2"
+          >Editar</a
+        >
+        <button
+          (click)="deleteResource(category)"
+          class="btn btn-outline-danger btn-sm"
+        >
+          Excluir
+        </button>
       </td>
     </tr>
   </tbody>
