@@ -9,19 +9,6 @@
   button-class="btn-light"
 ></app-page-header>
 
-<div class="row mb-4">
-  <div class="col-md-9">
-    <h1 class="h2 border-left pl-2">
-      {{ pageTitle }}
-    </h1>
-  </div>
-  <div class="col-md-3">
-    <a routerLink="/entries" class="btn btn-light float-right">
-      << Voltar
-    </a>
-  </div>
-</div>
-
 <form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card">
     <div class="card-header">
@@ -44,18 +31,11 @@
               option.text
             }}</option>
           </select>
-
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('type').invalid &&
-              resourceForm.get('type').touched
-            "
+          <app-form-field-error
+          [form-control]="resourceForm.get('type')"
           >
-            <div *ngIf="resourceForm.get('type').errors.required">
-              dado obrigatório
-            </div>
-          </div>
+          </app-form-field-error>
+
         </div>
 
         <!-- name -->
@@ -68,20 +48,10 @@
             formControlName="name"
           />
 
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('name').invalid &&
-              resourceForm.get('name').touched
-            "
+          <app-form-field-error
+          [form-control]="resourceForm.get('name')"
           >
-            <div *ngIf="resourceForm.get('name').errors.required">
-              dado obrigatório
-            </div>
-            <div *ngIf="resourceForm.get('name').errors.minlength">
-              deve ter no mínimo 2 caracteres
-            </div>
-          </div>
+          </app-form-field-error>
         </div>
 
         <!-- amount -->
@@ -100,17 +70,10 @@
             />
           </div>
 
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('amount').invalid &&
-              resourceForm.get('amount').touched
-            "
+          <app-form-field-error
+          [form-control]="resourceForm.get('amount')"
           >
-            <div *ngIf="resourceForm.get('amount').errors.required">
-              dado obrigatório
-            </div>
-          </div>
+          </app-form-field-error>
         </div>
 
         <!-- date -->
@@ -126,18 +89,10 @@
             [showButtonBar]="true"
           >
           </p-calendar>
-
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('date').invalid &&
-              resourceForm.get('date').touched
-            "
+          <app-form-field-error
+          [form-control]="resourceForm.get('date')"
           >
-            <div *ngIf="resourceForm.get('date').errors.required">
-              dado obrigatório
-            </div>
-          </div>
+          </app-form-field-error>
         </div>
       </div>
 
@@ -162,17 +117,10 @@
             </label>
           </div>
 
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('paid').invalid &&
-              resourceForm.get('paid').touched
-            "
+          <app-form-field-error
+          [form-control]="resourceForm.get('paid')"
           >
-            <div *ngIf="resourceForm.get('paid').errors.required">
-              dado obrigatório
-            </div>
-          </div>
+          </app-form-field-error>
         </div>
 
         <!-- categoryId -->
@@ -190,17 +138,10 @@
             }}</option>
           </select>
 
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('categoryId').invalid &&
-              resourceForm.get('categoryId').touched
-            "
+          <app-form-field-error
+          [form-control]="resourceForm.get('categoryId')"
           >
-            <div *ngIf="resourceForm.get('categoryId').errors.required">
-              dado obrigatório
-            </div>
-          </div>
+          </app-form-field-error>
         </div>
 
         <!-- description -->
@@ -212,6 +153,12 @@
             id="description"
             formControlName="description"
           />
+
+          <app-form-field-error
+          [form-control]="resourceForm.get('description')"
+          >
+          </app-form-field-error>
+
         </div>
       </div>
     </div>
